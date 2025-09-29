@@ -34,5 +34,14 @@ c= range/i wherein c=class width.
 GENERATE FREQUENCY DISTRIBUTION USING EXCEL
 - Refer to one given by sir BobJog
 
+Relative Frequency
+Rf= (frequency/total frequency)100
+
+Less than cumulative frequency- Add mo lang frequency
+
+Grereethan cumulative frequency- adding starting from the frequency of the last class limit then upwards.
 
 
+- Qualitative data is easier in tabular form since no need to create classes.
+
+- Frequency distribution is used for nominal and ordinal scales.
