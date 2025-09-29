@@ -45,3 +45,12 @@ Grereethan cumulative frequency- adding starting from the frequency of the last 
 - Qualitative data is easier in tabular form since no need to create classes.
 
 - Frequency distribution is used for nominal and ordinal scales.
+
+
+OTHER KINDS OF TABLES
+
+1. Cross sectional data table- different elements of a population and their information on a certain period if time only
+
+2. Time Series data table- Same sa cross sectional data table pero varying times naman.
+
+3. Contingency Table- Matrix format that dislays frequency of several variables
