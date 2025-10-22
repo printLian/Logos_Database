@@ -51,3 +51,24 @@ void loop(){
   segmentOutput(leds_Uno, tens);
   segmentOutput(leds_Dos, ones);
 }
+
+/*
+a1= 2
+a2= 3
+a3= 4
+a4= 5
+a5= 6
+a6= 7
+a7= 8
+
+button 1= 9
+button 2= 10
+
+b1= 22
+b2= 23
+b3= 24
+b4= 25
+b5= 26
+b6= 27
+b7= 28
+*/
