@@ -58,16 +58,16 @@ void displayData(int value) {
   lcd.print(distance);
   lcd.print(" cm");
   lcd.setCursor(0, 3);
-  if (value >= 100) {
-    lcd.print("Tank FULL!");
-  } else if (value <= 25) {    // 🔹 changed from 10% to 25%
-    lcd.print("Tank LOW!");
+  if (value >= 110) {
+    lcd.print("Tank FULL!      ");
+  } else if (value <= 25) {
+    lcd.print("Tank LOW!       ");
   } else {
-    lcd.print("Normal Level");
+    lcd.print("Normal Level    ");
   }
 }
 
-// Measure distance and control outputs
+// Measure distance and control outputs (NO DELAY!)
 void measureDistance() {
   digitalWrite(TRIGPIN, LOW);
   delayMicroseconds(2);
@@ -82,6 +82,7 @@ void measureDistance() {
     waterLevelPer = map((int)distance, emptyTankDistance, fullTankDistance, 0, 100);
     displayData(waterLevelPer);
 
+    // Send to Blynk
     Blynk.virtualWrite(VPIN_BUTTON_1, waterLevelPer);
     Blynk.virtualWrite(VPIN_BUTTON_2, String(distance) + " cm");
 
@@ -91,8 +92,8 @@ void measureDistance() {
     Serial.print(waterLevelPer);
     Serial.println("%");
 
-    // Control logic (UPDATED)
-    if (waterLevelPer >= 100 || waterLevelPer <= 25) {   // 🔹 changed from 10% to 25%
+    // Control logic
+    if (waterLevelPer >= 100 || waterLevelPer <= 25) {   
       digitalWrite(BuzzerPin, HIGH);
       digitalWrite(GreenLed, HIGH);
     } else {
@@ -100,8 +101,7 @@ void measureDistance() {
       digitalWrite(GreenLed, LOW);
     }
   }
-
-  delay(300); // faster refresh rate
+  // REMOVED delay(300) - timer controls update rate now
 }
 
 void setup() {
@@ -126,7 +126,11 @@ void setup() {
   delay(1500);
 
   WiFi.begin(ssid, pass);
-  timer.setInterval(2000L, checkBlynkStatus);
+  
+  // Setup timers
+  timer.setInterval(2000L, checkBlynkStatus);  // Check WiFi every 2 seconds
+  timer.setInterval(500L, measureDistance);    // Measure every 500ms (real-time updates)
+  
   Blynk.config(auth);
 
   lcd.clear();
@@ -145,7 +149,15 @@ void setup() {
 }
 
 void loop() {
-  measureDistance();
   Blynk.run();
-  timer.run();
+  timer.run();  // Timer handles measureDistance() automatically
+  // measureDistance() is now called by timer, not directly here
 }
+
+/*
+SDA and SCL to 21 and 22 
+echo and trigger= 26 and 27
+buzzer= 12
+led= 14
+do it esp 32 devkit
+*/

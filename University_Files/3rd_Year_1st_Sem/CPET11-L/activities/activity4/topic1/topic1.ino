@@ -88,3 +88,11 @@ void displayTime() {
   if (seconds < 10) lcd.print("0");
   lcd.print(seconds);
 }
+
+/*
+SDA and SCL to SDA and SCL
+
+Button 1,2,3,4 to 2,3,4,5
+Pull up external resistor to ground 10k ohms. Connect button pins to pull up resistor.
+Buzzer=6
+*/

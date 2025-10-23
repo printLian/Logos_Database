@@ -21,8 +21,8 @@ BlynkTimer timer;
 char auth[] = BLYNK_AUTH_TOKEN;
 
 //Enter your WIFI SSID and password
-char ssid[] = "1234";
-char pass[] = "hello123";
+char ssid[] = "PLDTSATLINK7MSdh";
+char pass[] = "NetworkPolice1234!";
 
 void setup() {
 // Debug console
@@ -92,3 +92,9 @@ void loop() {
 Blynk.run();   // Run Blynk
 timer.run();   // Run timer tasks
 }
+
+/*
+SDA and SCL= 21 and 22
+Relay Module= 4
+Sensor= 33
+*/

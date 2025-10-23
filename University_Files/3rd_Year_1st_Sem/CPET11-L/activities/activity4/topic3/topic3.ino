@@ -21,8 +21,8 @@ void setup() {
   rtc.writeProtect(false); 
   rtc.halt(false);        
 
-  Time t(2025, 9, 19, 19, 00, 0, Time::kFriday);
-  rtc.time(t);
+  // Time t(2025, 10, 23, 5, 00, 0, Time::kThursday);
+  // rtc.time(t);
 
   pinMode(btnHour, INPUT);
   pinMode(btnMin, INPUT);
@@ -88,3 +88,18 @@ void loop() {
 
   delay(200); 
 }
+
+/*
+SDA to SCL = SDA and SCL
+
+rst, data clk = 2, 3, 4
+
+button 1= 5
+button 2= 6
+external resistors 
+
+Relay= 7
+Common= VCC
+Buzzer= NC
+Red LED= NO
+*/

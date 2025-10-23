@@ -73,3 +73,10 @@ void loop() {
   Blynk.run();   // Run the Blynk library
   timer.run();   // Run the timer
 }
+
+/*
+SDA and SCL= 21 and 22
+
+gas sensor= 34 (A0)
+Buzzer= 13
+*/
