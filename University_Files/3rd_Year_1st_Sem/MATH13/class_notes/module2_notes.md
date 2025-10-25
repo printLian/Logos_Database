@@ -11,7 +11,7 @@ Class Mark- Median of class interval. Pwede rin gamitin median of class boundari
 STEPS IN CONSTRUCTING FREQUENCY DISTRIBUTION
 
 Given an unsorted groiped data, use the Sturges' formula. Round i to whole number
-i= 1+ [(log n)/(log 2)]
+i= 1+ \[(log n)/(log 2)]
 
 n= sample size
 
@@ -49,3 +49,4 @@ Cross sectional data table- different elements of a population and their informa
 Time Series data table- Same sa cross sectional data table pero varying times naman.
 
 Contingency Table- Matrix format that dislays frequency of several variables
+

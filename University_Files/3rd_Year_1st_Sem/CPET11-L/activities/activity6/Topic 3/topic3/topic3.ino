@@ -21,8 +21,8 @@ BlynkTimer timer;
 char auth[] = BLYNK_AUTH_TOKEN;
 
 //Enter your WIFI SSID and password
-char ssid[] = "PLDTSATLINK7MSdh";
-char pass[] = "NetworkPolice1234!";
+char ssid[] = "1234";
+char pass[] = "hello12345";
 
 void setup() {
 // Debug console
