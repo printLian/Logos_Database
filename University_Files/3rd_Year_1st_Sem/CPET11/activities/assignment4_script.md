@@ -1,0 +1,3 @@
+Moving on, with respect to our proposed Fire Probability and Prediction System, the following pictorial and schematic diagram shows a scaled down circuit of the proposed system. Buttons 1-5 would represent the temperature, humidity, smoke, gas and oxygen sensor of the proposed system as inputs. Button 6 would represent what would happen kapag lahat ng mga sensors ay triggered. All of them would be equipped with an external pull up resistor of 10kohms para maiwasan yung floating state.
+
+The LEDs, with respect sa code, goes high with their respective buttons with button 6 setting the LEDs to high once pressed. The pin configuration for this circuit is straightforward with the buttons connected to pins 2-7 respectively and the LEDs connected from 8-12 naman.
