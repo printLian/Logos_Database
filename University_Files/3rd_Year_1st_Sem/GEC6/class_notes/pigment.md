@@ -27,5 +27,9 @@ Color Psychology
 - Study of the psychological effects of colors on human behavior.
 
 1. Red- Life and warmth. Intense.
-2. 
-2. 
+2. Yellow- Symbolism of gold. Pleasant and cheerful feelings.
+3. Green-Stands for awakening, beggining and growth
+4. Blue- wide open space and emptiness
+5. Purple- Royalty and Priesthood
+6. Orange- Vibrant and energetic color. Enthusiasm, creativity, and warmth.
+7. Black and White- Death, darkness, power, authority and lucky, purity and cleanliness respectively.
