@@ -18,10 +18,15 @@
 
 4. Design Consideration 
     - Determine the load(device) first and list its required I(current). After figuring out your load, you should also list Vo (voltage output that you want as a supply). Using the required current of your load and the Vo you have used, you can now calculate the resistance needed for your load (para hindi masira) using the formula R = V/I. Or you can just design a circuit na ang output ay pasok doon sa load na gagamitin mo (wag kang sbapn).
+
     - Check the power dissipation of the load. Power dissipation is the heat that the load will release as it uses power. Compute it using the formula P = VI. The actual component must have a power rating higher than the calculated value so it doesn't overheat. (apply for resistor and other components).
+    
     - Transformer Voltage Rating. Provide a high enough voltage supply for your desired dc output. Para maiwasan ang hindi pag meet ng desired dc, kasi yung power nyan ay nababawasan as it passes different kind of components. Example: if you want a 5 volts output, then you should get atleast a 12 volts step down or 24 volts step-down transormer. You can check the trasformer datasheet to check if your transformer meet the dc output of your design.
+
     - Transformer current rating. The required I(current) of the transformer should be equal or higher than the computed Io of the load.
+
     - Peak voltage of ac. You should find the peak voltage of the ac because usually the 12 volts that you see is just the rms. Its important to get the voltage peak because this is the true value that the capacitor uses to charge itself up, meaning that to get your actual desired output you need to get the true value (peak voltage) of the transformer. To calculate this shit we have the formula Vm = Vmp(rms voltage) x √2.  
+    
     - Rectifier voltage drop. Add all the voltage of each rectifier that you are using (diode), usually a diode have a 0.7 voltage (see datasheet for accurate voltage). After that list it as Vk then that is the voltage drop after rectifying
     - Calculate the DC output voltage. Using the Vk (voltage drop after rectification) and the Vm (voltage peak), calculate the output voltage after it passes in the rectifier. Here is the formula:
         Full-wave rectifier:

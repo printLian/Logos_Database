@@ -1,0 +1,131 @@
+PRELIMS NOTES
+
+ ACCESSING A WEBSITE (FLOW)
+1. URL- You request a webpage by accessing a URL. URL contains information about a specific html document on a web server in the internet. 
+2. HTTP Request- Browser sends an https request to that web server and asks for the page (html file). 
+3. HTTP Response- Web server looks for the requested  files on its own server.
+
+Notes about HTTPS Response:
+- If page cannot be found in the web server, web server throws a "404 Not Found" message.
+- If page and files are found, requested file is returned to the browser of the user. 
+- Static Website: Fixed html file with fixed content.
+- Dynamic Website: May kasama nang backend.
+
+4. Parsing- Once the requested file is returned to the browser through a HTTP Response, the broswer of the user parses the html file. Individual elements na labas sa html file such as images are requested again to be retrieved from the web server and returned back to the browser.
+
+Definition of Terms
+
+HTML- The markup language used to describe web content
+
+W3C — The organization that monitors web technologies
+
+CERN — The particle physics lab where the web was born
+
+CSS — The language used to specify how web content looks
+
+HTTPS — A protocol for transferring web documents on the internet securely
+
+IP — Internet Protocol
+
+URL — The location of a web document or resource
+
+NCSA — Home of Mosaic, the first graphical browser
+
+DNS — Matches domain names with numeric IP addresses
+
+FTP — A protocol for file transfer
+
+BIG CONCEPTS
+- refers to the situations and factors that a web designer needs to take into account when making their website.
+
+1. Multitude of Devices- The release of various smartphones, screen resolutions and sizes of screens should be taken into account to create and accessible and functional web page.
+2. Web Standards- Programmmers of webiste should adhere to the standards set by the World Wide Web Consortium (W3C) so that websites would appear consistent across all modern browsers and devices.
+3. Progressive Enhancement- Strategy that ensures websites can work on all browsers regardless of the capability.
+
+    a. Authoring Strategy- Writing clean html code on most known devices and broswers.
+    b. Styling Strategy- Do CSS progressively as older browsers ignore rules they don't understand then add incrementaly.
+    c. Scripting Strategy- Ensure basic site functionality even if java script is disabled.
+
+4. Responsive Web Design (RWD)- Utilization of HTML and CSS layouts so that a web page will adjust its size depending on difference screen sizes and device types.
+5. Accessibility- Website is ensured to be utilized by everyone regardless of capability, device, browser utilized or other factors. Websites should be accessed through a variety of methodologies, foot pedals, joysticks, braille displays and more.
+
+    CATEGORIES OF DISABILITIES AFFECTING WEB INTERACTION
+    a. Vision Impairment- People with low or no vision may use assistive devices to access websites well.
+    b. Mobility Impairment- People who are limited or no use to their hands should be able to utilize assistive devices such as foot pedal, voice commands and more.
+    c. Auditory Impairment- People who have limited to no hearing capaility should be given alternatives to access a website such as transcripts or captions.
+    b. Cognitive Ipairment- Users with limitations with regards to reading comprehension, problem solving and attention limitations benefit when sites are designed in a simple and clear manner.
+
+    ACCESSIBILITY STANDARDS 
+    a. W3C's Web Accessiblitry Initiative (WAI)
+    b. Web Content Accesibility Guidelins (WCAG)
+    c. WAI-ARIA (Accessible Rich Internet Applications)
+
+
+6. Site Performance- refers tro how quickly a website loads and responds. This directly affects user satisfaction and even business revenue.
+
+    KEY OPTIMIZATION PRACTICES
+    - Optimize images to reduce file size
+    - Streamline HTML by reducing nesting
+    - Limit JavaScript Use
+    - Reduce HTTPS Requests.
+    - Utilize Network tool in a given browser's Developer Tools to view all server requests.
+
+ANATOMY OF HTML ELEMENT
+- Element- building blocks of html that define the structure and meaning of contents.
+
+<h1>Title</h1>
+
+- The whole thing based on the example above is called the element. The one that defines it (<h1>) is called a tag. We have the opening tag (<h1>) and the closing tag (</h1>). The actual content (Title) is called the content.
+- Tags are not case sensitive. 
+
+BASIC HTML SETUP
+
+1. <!DOCTYPE html>
+2. <html lang="en">
+
+3.    <head>
+4.    <meta charset="utf-8">
+5.    <title>Title Here</title>
+6.    </head>
+
+7.    <body>
+8.     <!-- Page Content goes here -->
+9.    </body>
+10. </html>
+
+1. Document Type Declaration- Lets modern browsers know that the document is an html file.
+2. Root Element- Contains all elements in the html document.
+               - lang is an attribute that specifies what language the document is in.
+               - en is the element that says that the html document is in english,
+3. Head- Element that is not part of the actual content of the html document.
+4. meta- element that specifies the characters to be utilized by the html document. utf-8 means unicode.
+5. Title- Content to be shown on the tab browser once this html file is accessed.
+6. body- everything we want to show up in the browser window. 
+
+FURTHER IDENTIFYING HTML ELEMENTS
+- HTML Markups- Add structure to the content of a given page.
+- Semantic Markups- choosing HTML elements that accurately describe the purpose of the content.
+- CSS- should be utilized when handling the appearance of elements.
+- Document Object Model (DOM)- Model layout commonly seen in html about elements in a nested form.
+- By default, elements display themselves by vertical block elements taking up the whole width of a given browser. That means if you set the background of h1 to red in CSS, you would see a whole red background of h1 spanning the totality of the width of the browser.
+
+VOID ELEMENTS
+- html elements that do not have closing tags and rather displaying text contents, they do other visual structuring contents in the body.
+
+Example of Void Elements:
+<img>- embeds and image
+<br>- line break
+<hr>- Horizontal Rule
+<meta>- document information
+
+ATTRIBUTES
+- instructions that modify or clarify an element.
+- syntax is as follows:
+<tag attributeName="value">
+- Multiple attributes are separated by space.
+    
+VALIDATING DOCUMENTS
+- Validation- refers to checking if your html and CSS documents adhere to rules and standards for web design.
+- Validators- Tools that automatically detect HTML/CSS errors. Code editors and browsers usually have validators with them. Furthermore, you could utilize Nu HTML Checker which is an online tool validator.
+
+

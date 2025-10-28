@@ -12,8 +12,8 @@ void setup() {
   rtc.writeProtect(false); 
   rtc.halt(false);         
 
-  Time t(2025, 9, 14, 1, 00, 0, Time::kSunday);
-  rtc.time(t);
+  // Time t(2025, 10, 23, 5, 00, 0, Time::kSunday);
+  // rtc.time(t);
 }
 
 void loop() {
@@ -41,3 +41,9 @@ void loop() {
 
   delay(1000);
 }
+
+/*
+SDA and SCL to SDA and SCL
+
+rst, data and clk= 2, 3, 4
+*/

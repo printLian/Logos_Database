@@ -2,15 +2,17 @@
 #include <WiFi.h>
 #include "SinricPro.h"
 #include "SinricProSwitch.h"
+#include "soc/soc.h"           // Add this
+#include "soc/rtc_cntl_reg.h"
 
 // ====== WiFi & Sinric Pro Credentials ======
-#define WIFI_SSID     "matrix"
-#define WIFI_PASS     "135792468"
+#define WIFI_SSID     "PLDTSATLINK7MSdh"
+#define WIFI_PASS     "NetworkPolice1234!"
 #define APP_KEY       "6e41d7c9-a153-49f5-9b1e-5e26b27c31eb"
 #define APP_SECRET    "4a01b0b8-62aa-4706-8458-e7614c87f710-8d9d90df-ca7b-410b-96e5-dacefc1a21cd"
 
 // Sinric Device IDs (create 2 Switch devices in SinricPro)
-#define DEVICE_ID_1   "68d438dd51811ad2b7504752"
+#define DEVICE_ID_1   "68d438dd51811ad2b7504752" 
 #define DEVICE_ID_2   "68d4394451811ad2b75047d7"
 
 // ====== Pin Definitions ======
@@ -49,6 +51,12 @@ bool onPowerState2(const String &deviceId, bool &state) {
 
 // ====== Setup ======
 void setup() {
+  WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); // Disable brownout - ADD AS FIRST LINE
+  
+  Serial.begin(BAUD_RATE);
+  delay(1000);
+  
+  pinMode(RELAY1_PIN, OUTPUT);
   Serial.begin(BAUD_RATE);
 
   pinMode(RELAY1_PIN, OUTPUT);
@@ -113,3 +121,14 @@ void loop() {
     lastBtn2 = btn2;
   }
 }
+
+/*
+Push button1= 12
+Push button2= 13
+No pull up external resistor.
+do it esp32 devkit v1 module
+
+LEDS to NC
+Common to VCC
+1n1 and 1n2= 22 and 23
+*/

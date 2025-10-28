@@ -1,10 +1,10 @@
-const int a = 8; 
-const int b = 9; 
+const int a = 2; 
+const int b = 3; 
 const int c = 4; 
 const int d = 5;
-const int e = 6; 
-const int f = 2; 
-const int g = 3; 
+const int e = 6;
+const int f = 7; 
+const int g = 8; 
 
 bool bPress = false;
 const int buttonPin = 10;
@@ -82,3 +82,14 @@ void turnOff(){
   digitalWrite(f,LOW);
   digitalWrite(g,LOW);
 }
+
+/*
+a= 2
+b= 3
+c= 4
+d= 5
+e= 6
+f= 7
+g= 8
+button= 10
+*/

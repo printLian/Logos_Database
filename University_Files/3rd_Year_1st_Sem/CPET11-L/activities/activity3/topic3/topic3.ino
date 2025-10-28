@@ -4,7 +4,7 @@
 #define DHTPIN 2
 #define DHTTYPE DHT11
 
-LiquidCrystal_I2C lcd(0x27, 16, 2);
+LiquidCrystal_I2C lcd(0x27, 20, 4);
 DHT dht(DHTPIN, DHTTYPE);
 
 void setup(){
@@ -28,3 +28,10 @@ void loop(){
   lcd.print("C");
   delay(1000);
 }
+
+/*
+SDA SCL to SDA SCL
+
+blue facing you
+2 Vcc GND
+*/

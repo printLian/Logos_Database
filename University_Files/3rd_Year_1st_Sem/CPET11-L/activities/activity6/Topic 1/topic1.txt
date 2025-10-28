@@ -1,0 +1,151 @@
+#define BLYNK_TEMPLATE_ID "TMPL6C59Tss2O"
+#define BLYNK_TEMPLATE_NAME "ESP32 WaterLevel"
+#define BLYNK_AUTH_TOKEN "stEj6vFxp0WwxMm6vQaXXpVr_BFRy1J8"
+
+char ssid[] = "1234";
+char pass[] = "hello123";
+
+// Water level limits (in cm)
+int emptyTankDistance = 70;  // distance when tank is empty
+int fullTankDistance  = 30;  // distance when tank is full
+
+// Pins
+#define TRIGPIN    27  // D27
+#define ECHOPIN    26  // D26
+#define wifiLed    2   // D2
+#define BuzzerPin  12  // D12
+#define GreenLed   14  // D14
+
+#define VPIN_BUTTON_1    V1
+#define VPIN_BUTTON_2    V2
+
+#include <LiquidCrystal_I2C.h>
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
+
+LiquidCrystal_I2C lcd(0x27, 20, 4); // LCD address and size
+
+float duration;
+float distance;
+int waterLevelPer;
+
+char auth[] = BLYNK_AUTH_TOKEN;
+BlynkTimer timer;
+
+// Blynk connection check
+void checkBlynkStatus() {
+  bool isconnected = Blynk.connected();
+  digitalWrite(wifiLed, isconnected ? HIGH : LOW);
+}
+
+BLYNK_CONNECTED() {
+  Blynk.syncVirtual(VPIN_BUTTON_1);
+  Blynk.syncVirtual(VPIN_BUTTON_2);
+}
+
+// Display function for LCD
+void displayData(int value) {
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Water Level System");
+  lcd.setCursor(0, 1);
+  lcd.print("Level: ");
+  lcd.print(value);
+  lcd.print("%");
+  lcd.setCursor(0, 2);
+  lcd.print("Distance: ");
+  lcd.print(distance);
+  lcd.print(" cm");
+  lcd.setCursor(0, 3);
+  if (value >= 100) {
+    lcd.print("Tank FULL!");
+  } else if (value <= 25) {    // 🔹 changed from 10% to 25%
+    lcd.print("Tank LOW!");
+  } else {
+    lcd.print("Normal Level");
+  }
+}
+
+// Measure distance and control outputs
+void measureDistance() {
+  digitalWrite(TRIGPIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIGPIN, HIGH);
+  delayMicroseconds(20);
+  digitalWrite(TRIGPIN, LOW);
+
+  duration = pulseIn(ECHOPIN, HIGH);
+  distance = ((duration / 2) * 0.343) / 10;
+
+  if (distance < emptyTankDistance && distance > (fullTankDistance - 10)) {
+    waterLevelPer = map((int)distance, emptyTankDistance, fullTankDistance, 0, 100);
+    displayData(waterLevelPer);
+
+    Blynk.virtualWrite(VPIN_BUTTON_1, waterLevelPer);
+    Blynk.virtualWrite(VPIN_BUTTON_2, String(distance) + " cm");
+
+    Serial.print("Distance: ");
+    Serial.print(distance);
+    Serial.print(" cm | Water Level: ");
+    Serial.print(waterLevelPer);
+    Serial.println("%");
+
+    // Control logic (UPDATED)
+    if (waterLevelPer >= 100 || waterLevelPer <= 25) {   // 🔹 changed from 10% to 25%
+      digitalWrite(BuzzerPin, HIGH);
+      digitalWrite(GreenLed, HIGH);
+    } else {
+      digitalWrite(BuzzerPin, LOW);
+      digitalWrite(GreenLed, LOW);
+    }
+  }
+
+  delay(300); // faster refresh rate
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  pinMode(ECHOPIN, INPUT);
+  pinMode(TRIGPIN, OUTPUT);
+  pinMode(wifiLed, OUTPUT);
+  pinMode(BuzzerPin, OUTPUT);
+  pinMode(GreenLed, OUTPUT);
+
+  digitalWrite(wifiLed, LOW);
+  digitalWrite(BuzzerPin, LOW);
+  digitalWrite(GreenLed, LOW);
+
+  lcd.init();
+  lcd.backlight();
+  lcd.setCursor(0, 0);
+  lcd.print("Water Level System");
+  lcd.setCursor(0, 1);
+  lcd.print("Initializing...");
+  delay(1500);
+
+  WiFi.begin(ssid, pass);
+  timer.setInterval(2000L, checkBlynkStatus);
+  Blynk.config(auth);
+
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Connecting WiFi...");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(250);
+    lcd.print(".");
+  }
+
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("WiFi Connected!");
+  delay(800);
+  lcd.clear();
+}
+
+void loop() {
+  measureDistance();
+  Blynk.run();
+  timer.run();
+}

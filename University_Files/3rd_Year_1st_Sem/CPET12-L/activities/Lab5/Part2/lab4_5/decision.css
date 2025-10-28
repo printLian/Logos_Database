@@ -1,0 +1,64 @@
+@font-face{
+    font-family: 'Roboto';
+    src: url('roboto/Roboto-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Roboto';
+    src: url('roboto/Roboto-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+}
+
+@font-face{
+    font-family: 'Outfit';
+    src: url('outfit/Outfit-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+h2{
+    font-family: Outfit;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 300px;
+    margin-left: 300px;
+    margin-right: 300px;
+    gap: 20px;
+}
+
+.login{
+    display: flex;
+    border: 1px solid black;
+    background: rgba(76, 76, 212, 0.795); 
+    width: 200px;
+    border-radius: 13px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.register{
+    display: flex;
+    border: 1px solid black;
+    background: rgba(76, 212, 133, 0.74); 
+    width: 200px;
+    border-radius: 13px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}

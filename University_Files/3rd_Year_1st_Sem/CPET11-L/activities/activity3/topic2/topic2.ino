@@ -12,7 +12,7 @@
 #if USE_I2C
   #include <Wire.h>
   #include <LiquidCrystal_I2C.h>
-  LiquidCrystal_I2C lcd(0x27, 16, 2); // Change address if needed (0x27 or 0x3F)
+  LiquidCrystal_I2C lcd(0x27, 20, 4); // Change address if needed (0x27 or 0x3F)
 #else
   #include <LiquidCrystal.h>
   LiquidCrystal lcd(12, 11, 5, 4, 3, 2); // RS, EN, D4, D5, D6, D7
@@ -31,7 +31,7 @@ void setup() {
   lcd.init();
   lcd.backlight();
 #else
-  lcd.begin(16, 2);
+  lcd.begin(20, 4);
 #endif
 
   // Startup message
@@ -75,3 +75,8 @@ void loop() {
 
   delay(1000); // Update every 1 second
 }
+
+/*
+Flat face to me
+Vcc A1 GND
+*/
